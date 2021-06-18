@@ -1,2 +1,11 @@
-<!--pages/goods_list/goods_list.wxml-->
-<text>pages/goods_list/goods_list.wxml</text>
+<view>
+	<!-- 搜索框 -->
+	<search-input></search-input>
+
+	<!-- tab标签栏 -->
+	<tabs tabs="{{tabs}}" bindtabChange="tabChange">
+		<block wx:if="{{tabs[0].id === currentIndex}}">0</block>
+		<block wx:if="{{tabs[1].id === currentIndex}}">1</block>
+		<block wx:if="{{tabs[2].id === currentIndex}}">2</block>
+	</tabs>
+</view>
