@@ -1,18 +1,63 @@
-// pages/index/index.js
+import {
+	request
+} from "../../request/index";
+
 Page({
 
 	/**
 	 * 页面的初始数据
 	 */
 	data: {
+		swiperList: [], // 轮播图数据
+		cateList: [], // 分类导航数据
+		floorList: [], //楼层数据
+	},
 
+	// 获取轮播图的数据
+	getSwiperList() {
+		request({
+			url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata'
+		}).then(res => {
+			this.setData({
+				swiperList: res.message
+			})
+		})
+	},
+
+	// 获取分类导航数据
+	getCateList() {
+		request({
+			url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/catitems'
+		}).then(res => {
+			this.setData({
+				cateList: res.message
+			})
+		})
+	},
+
+	// 获取楼层数据
+	getFloorList() {
+		request({
+			url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/floordata'
+		}).then(res => {
+			let num = 0;
+			let floorList = res.message.map(item => {
+				item.id = num++;
+				return item;
+			});
+			this.setData({
+				floorList
+			})
+		})
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-
+		this.getSwiperList();
+		this.getCateList();
+		this.getFloorList();
 	},
 
 	/**
