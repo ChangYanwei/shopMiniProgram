@@ -22,17 +22,17 @@ Page({
 		}).then(res => {
 			console.log("商品详情", res);
 
-			let goodsDetail = {
-				pics: res.message.pics,
-				goods_name: res.message.goods_name,
-				goods_price: res.message.goods_price,
-				// 部分手机不识别webp图片格式
-				goods_introduce: res.message.goods_introduce,
-				goods_id: res.message.goods_id
-			};
+			// let goodsDetail = {
+			// 	pics: res.message.pics,
+			// 	goods_name: res.message.goods_name,
+			// 	goods_price: res.message.goods_price,
+			// 	// 部分手机不识别webp图片格式
+			// 	goods_introduce: res.message.goods_introduce,
+			// 	goods_id: res.message.goods_id
+			// };
 
 			this.setData({
-				goodsDetail
+				goodsDetail: res.message
 			})
 		})
 	},
@@ -62,18 +62,20 @@ Page({
 	 * 6.弹出提示
 	 */
 	addCart() {
-		let cart = wx.getStorageSync('cart') || [];
+		let cart = wx.getStorageSync('cartGoods') || [];
 		let goodsDetail = this.data.goodsDetail;
 		let index = cart.findIndex(item => item.goods_id === goodsDetail.goods_id);
 		if (index === -1) {
 			// 商品不存在于购物车
+			// 商品初始购买数量为1，并将checked设置为true，用于在购物车页面上默认选中
 			goodsDetail.num = 1;
+			goodsDetail.checked = true;
 			cart.push(goodsDetail);
 		} else {
 			// 商品存在于购物车，数量+1
 			cart[index].num++;
 		}
-		wx.setStorageSync('cart', cart);
+		wx.setStorageSync('cartGoods', cart);
 		wx.showToast({
 			title: '添加成功',
 			mask: true
