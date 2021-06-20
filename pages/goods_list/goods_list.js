@@ -78,7 +78,6 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		console.log(options);
 		let queryParams = this.data.queryParams;
 		queryParams.cid = options.cat_id;
 		this.setData({
@@ -89,7 +88,6 @@ Page({
 
 	// 页面上滑，滚动条触底事件
 	onReachBottom() {
-		console.log('到底了');
 		let {
 			queryParams,
 			totalPage

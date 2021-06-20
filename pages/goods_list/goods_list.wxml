@@ -5,7 +5,7 @@
 	<!-- tab标签栏 -->
 	<tabs tabs="{{tabs}}" bindtabChange="tabChange">
 		<block wx:if="{{tabs[0].id === currentIndex}}">
-			<navigator class="goodsItem" wx:for="{{goodsList}}" wx:key="goods_id">
+			<navigator url="/pages/goods_detail/goods_detail?goods_id={{item.goods_id}}" class="goodsItem" wx:for="{{goodsList}}" wx:key="goods_id">
 				<view class="goodsImgWrap">
 					<image mode="widthFix" src="{{item.goods_small_logo ? item.goods_small_logo : '../../icons/no-img.png'}}"></image>
 				</view>
