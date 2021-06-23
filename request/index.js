@@ -1,6 +1,7 @@
 // 在首页会同时发送三个网络请求，必须在三个请求的数据都到达后再关闭loading
 
 let requestTime = 0
+
 export function request(params) {
 	let baseUrl = "https://api-hmugo-web.itheima.net/api/public/v1";
 
