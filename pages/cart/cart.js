@@ -99,9 +99,8 @@ Page({
 			});
 			return;
 		}
-
 		wx.navigateTo({
-			url: '/pages/pay/pay'
+			url:"/pages/pay/pay?totalPrice=" + this.data.totalPrice
 		})
 	},
 

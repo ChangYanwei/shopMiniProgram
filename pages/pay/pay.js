@@ -5,62 +5,49 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-
+		address: {}, // 用户收获地址
+		addressDetail: "", // 详细地址数据 
+		cartGoods: [], // 购物车数据,
+		totalPrice: 0, // 商品总价
+		isPay: false, // 支付点击了支付按钮
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-
+		this.setData({
+			totalPrice: options.totalPrice
+		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面初次渲染完成
-	 */
-	onReady: function () {
 
+	// 页面显示/切入前台时触发，可能会触发多次
+	onShow() {
+		let address = wx.getStorageSync('address');
+		let addressDetail = wx.getStorageSync('addressDetail');
+		let cartGoods = wx.getStorageSync('cartGoods') || [];
+		// 从缓存中拿到的是所有购物车数据，这里要筛选出用户选中的商品
+		cartGoods = cartGoods.filter(item => item.checked);
+
+		this.setData({
+			address,
+			addressDetail,
+			cartGoods
+		});
 	},
 
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	onShow: function () {
-
+	// 点击支付按钮，弹出收款码
+	toPay() {
+		this.setData({
+			isPay: true
+		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
-	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
-	},
-
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
+	// 取消支付
+	cancelPay() {
+		this.setData({
+			isPay: false
+		})
 	}
 })

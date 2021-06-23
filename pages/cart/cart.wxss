@@ -133,8 +133,4 @@ page {
 	align-items: center;
 	color: white;
 	background-color: var(--themeColor);
-
-	/* padding: 10rpx 20rpx; */
-	/* text-align: center; */
-	/* line-height: 100rpx; */
 }
