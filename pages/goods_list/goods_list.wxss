@@ -32,5 +32,7 @@
 	font-size: 30rpx;
 }
 
-
-
+.noDataImg {
+	width: 100%;
+	margin-top: 50rpx;
+}

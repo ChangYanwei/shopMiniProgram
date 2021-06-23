@@ -10,6 +10,8 @@ Page({
 	data: {
 		// 商品详情数据
 		goodsDetail: {},
+		// 当前商品是否被收藏
+		isCollect: false
 	},
 
 	// 获取商品详情
@@ -21,15 +23,6 @@ Page({
 			}
 		}).then(res => {
 			console.log("商品详情", res);
-
-			// let goodsDetail = {
-			// 	pics: res.message.pics,
-			// 	goods_name: res.message.goods_name,
-			// 	goods_price: res.message.goods_price,
-			// 	// 部分手机不识别webp图片格式
-			// 	goods_introduce: res.message.goods_introduce,
-			// 	goods_id: res.message.goods_id
-			// };
 
 			this.setData({
 				goodsDetail: res.message
@@ -82,31 +75,47 @@ Page({
 		});
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: function (options) {
-		this.getGoodsDetail(options.goods_id);
+	// 收藏商品
+	collect() {
+		let isCollect = this.data.isCollect;
+		let goodsDetail = this.data.goodsDetail;
+		let collectGoods = wx.getStorageSync('collectGoods') || [];
+		this.setData({
+			isCollect: !isCollect
+		});
+
+		if (!isCollect) {
+			collectGoods.push(goodsDetail);
+		} else {
+			let index = collectGoods.findIndex(item => item.goods_id === goodsDetail.goods_id);
+			collectGoods.splice(index, 1);
+		}
+		wx.setStorageSync('collectGoods', collectGoods);
+
+		wx.showToast({
+			title: !isCollect ? '收藏成功' : '取消收藏',
+			mask: true
+		});
+
 	},
 
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
+	onShow() {
+		let pages = getCurrentPages();
+		let currentPage = pages[pages.length - 1];
+		let goods_id = parseInt(currentPage.options.goods_id);
+		// 获取商品详情
+		this.getGoodsDetail(goods_id);
 
-	},
-
-	/**
-	 * 页面上拉触底事件的处理函数
-	 */
-	onReachBottom: function () {
-
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage: function () {
-
+		// 判断当前商品是否被收藏
+		let collectGoods = wx.getStorageSync('collectGoods') || [];
+		// 对于空数组来说，some返回false
+		let isCollect = collectGoods.some(item => item.goods_id === goods_id);
+		this.setData({
+			isCollect
+		});
 	}
+
+	
+
+	
 })

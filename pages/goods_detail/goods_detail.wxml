@@ -1,16 +1,17 @@
 <view>
 	<!-- 轮播图 -->
 	<swiper indicator-dots indicator-active-color="red" autoplay interval="2000" circular>
-		<swiper-item wx:for="{{goodsDetail.pics}}" wx:key="pics_id"> 
-			<image mode="widthFix" class="swiperImg" src="{{item.pics_mid}}" data-url="{{item.pics_mid}}" bindtap="previewImg"></image>
+		<swiper-item wx:for="{{goodsDetail.pics}}" wx:key="pics_id">
+			<image mode="widthFix" class="swiperImg" src="{{item.pics_mid}}" data-url="{{item.pics_mid}}"
+				bindtap="previewImg"></image>
 		</swiper-item>
 	</swiper>
 
 	<view class="goodsPrice">￥{{goodsDetail.goods_price}}</view>
 	<view class="goodsNameRow">
 		<view class="goodsName">{{goodsDetail.goods_name}}</view>
-		<view class="goodsCollect">
-			<text class="iconfont icon-iconinterfaceleft_menucollect"></text>
+		<view class="goodsCollect" bindtap="collect">
+			<text class="iconfont {{isCollect ? 'icon-collect':'icon-iconinterfaceleft_menucollect'}}"></text>
 			<view>收藏</view>
 		</view>
 	</view>
@@ -45,4 +46,3 @@
 		<view class="barItem buyBtn">立即购买</view>
 	</view>
 </view>
-

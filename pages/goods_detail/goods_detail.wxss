@@ -43,6 +43,10 @@ swiper {
 	border-left: 5rpx solid #ccc;
 }
 
+.icon-collect {
+	color: var(--themeColor);
+}
+
 .goodsInfoTitle {
 	color: var(--themeColor);
 	font-size: 32rpx;

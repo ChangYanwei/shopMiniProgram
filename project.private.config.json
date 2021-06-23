@@ -39,6 +39,19 @@
                         {
                               "name": "支付",
                               "pathName": "pages/pay/pay",
+                              "query": "",
+                              "scene": null
+                        },
+                        {
+                              "name": "用户",
+                              "pathName": "pages/user/user",
+                              "query": "",
+                              "scene": null
+                        },
+                        {
+                              "name": "商品收藏",
+                              "pathName": "pages/collect/collect",
+                              "query": "",
                               "scene": null
                         }
                   ]
