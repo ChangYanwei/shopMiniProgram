@@ -34,7 +34,9 @@ Page({
 		// 商品总页数
 		totalPage: 0,
 		// 商品列表数据
-		goodsList: []
+		goodsList: [],
+		// 是否要展示没有数据时的占位图
+		isShowPlaceholderImg: false,
 
 	},
 
@@ -64,9 +66,11 @@ Page({
 			} = res.message
 			// 计算出总页数
 			let totalPage = Math.ceil(total / queryParams.pagesize);
+			goodsList = goodsList.concat(goods);
 			this.setData({
-				goodsList: goodsList.concat(goods),
-				totalPage
+				goodsList,
+				totalPage,
+				isShowPlaceholderImg: goodsList.length === 0
 			});
 
 			// 关闭下拉刷新的窗口
@@ -79,7 +83,8 @@ Page({
 	 */
 	onLoad: function (options) {
 		let queryParams = this.data.queryParams;
-		queryParams.cid = options.cat_id;
+		queryParams.cid = options.cat_id || "";
+		queryParams.query = options.query || "";
 		this.setData({
 			queryParams
 		})

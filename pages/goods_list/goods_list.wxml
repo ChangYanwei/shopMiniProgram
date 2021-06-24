@@ -14,7 +14,7 @@
 					<view class="goodsPrice">￥{{item.goods_price}}</view>
 				</view>
 			</navigator>
-			<view wx:elseif="{{goodsList.length === 0}}">
+			<view wx:if="{{isShowPlaceholderImg}}">
 				<image mode="widthFix" src="../../icons/no-data.jpg" class="noDataImg"></image>
 			</view>
 		</block>

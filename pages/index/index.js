@@ -51,6 +51,17 @@ Page({
 		})
 	},
 
+	// 跳转到商品分类页面
+	toGoodsList(event){
+		let url = event.currentTarget.dataset.url;
+		let query = url.split("=")[1];
+		console.log(query);
+		wx.navigateTo({
+		  url: '/pages/goods_list/goods_list?query=' + query,
+		})
+
+	},
+
 	/**
 	 * 生命周期函数--监听页面加载
 	 */

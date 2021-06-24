@@ -5,7 +5,7 @@
 	<!-- 轮播图 -->
 	<swiper indicator-dots autoplay interval="2000" circular indicator-color="white" indicator-active-color="red">
 		<swiper-item wx:for="{{swiperList}}" wx:key="goods_id">
-			<navigator url="">
+			<navigator url="/pages/goods_detail/goods_detail?goods_id={{item.goods_id}}">
 				<image mode="widthFix" src="{{item.image_src}}" class="swiperImg"></image>
 			</navigator>
 		</swiper-item>
@@ -13,7 +13,8 @@
 
 	<!-- 分类导航 -->
 	<view class="cate">
-		<navigator wx:for="{{cateList}}" wx:key="name" class="cateItem">
+		<navigator url="/pages/category/category" open-type="switchTab" wx:for="{{cateList}}" wx:key="name"
+			class="cateItem">
 			<image mode="widthFix" src="{{item.image_src}}"></image>
 		</navigator>
 	</view>
@@ -25,10 +26,11 @@
 				<image mode="widthFix" src="{{item1.floor_title.image_src}}"></image>
 			</view>
 			<view class="floorList">
-				<navigator class="floorItem" wx:for="{{item1.product_list}}" wx:key="name" wx:for-item="item2"
+				<view class="floorItem" bindtap="toGoodsList" data-url="{{item2.navigator_url}}" wx:for="{{item1.product_list}}" wx:key="name" wx:for-item="item2"
 					wx:for-index="index2">
-					<image class="{{index2 !== 0 ? 'floorItemImg':'firstImg'}}" src="{{item2.image_src}}"></image>
-				</navigator>
+					<image class="{{index2 !== 0 ? 'floorItemImg':'firstImg'}}" src="{{item2.image_src}}">
+					</image>
+				</view>
 			</view>
 		</view>
 	</view>
