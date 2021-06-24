@@ -6,12 +6,9 @@
     "pages/goods_detail/goods_detail",
     "pages/cart/cart",
     "pages/collect/collect",
-    "pages/order/order",
     "pages/search/search",
     "pages/user/user",
     "pages/feedback/feedback",
-    "pages/login/login",
-    "pages/auth/auth",
     "pages/pay/pay"
   ],
   "window": {
