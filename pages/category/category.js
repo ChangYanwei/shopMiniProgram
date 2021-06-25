@@ -46,7 +46,7 @@ Page({
 			allCateData,
 			leftMenuList,
 			rightData
-		})
+		});
 	},
 
 	// 点击切换左侧菜单

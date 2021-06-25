@@ -1,14 +1,14 @@
 <view>
 	<!-- 用户信息 -->
 	<view class="userInfoWrap">
-		<view class="noLoginWrap" wx-if="{{!userInfo.nickName}}">
+		<view class="noLoginWrap" wx:if="{{!userInfo.nickName}}">
 			<image bindtap="getUserProfile" mode="widthFix" src="../../icons/no-login.png" class="noLoginImg">
 			</image>
 			<text>点击头像登录</text>
 		</view>
 
-		<view class="alreadyLoginWrap" wx-else>
-			<image src="{{userInfo.avatarUrl}}" class="userBgc"></image>
+		<view class="alreadyLoginWrap" wx:else>
+			<image mode="aspectFill" src="{{userInfo.avatarUrl}}" class="userBgc"></image>
 			<view class="userInfoShow">
 				<image mode="widthFix" src="{{userInfo.avatarUrl}}" class="userAvatar"></image>
 				<view class="nickName">{{userInfo.nickName}}</view>

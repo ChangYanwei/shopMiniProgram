@@ -15,6 +15,7 @@ page {
 .addressInfo {
 	display: flex;
 	justify-content: space-around;
+	padding: 0 20rpx;
 	margin-top: 20rpx;
 }
 

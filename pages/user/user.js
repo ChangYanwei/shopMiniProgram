@@ -11,22 +11,22 @@ Page({
 
 	// 获取用户信息
 	getUserProfile() {
+		wx.showLoading({
+		  title: '登录中',
+		})
 		wx.getUserProfile({
 			desc: "用于小程序的用户展示",
 			success: res => {
-				console.log(res);
 				this.setData({
 					userInfo: res.userInfo
 				});
 				wx.setStorageSync('userInfo', res.userInfo);
+				wx.hideLoading();
 			}
 		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面加载
-	 */
-	onLoad: function (options) {
+	onShow: function () {
 		// 获取用户信息
 		let userInfo = wx.getStorageSync('userInfo') || {};
 		// 获取收藏商品的列表

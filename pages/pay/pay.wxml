@@ -54,7 +54,7 @@
 
 	<!-- 支付二维码 -->
 	<view class="payImgWrapHidden {{isPay ? 'payImgWrap' : ''}}">
-		<image mode="widthFix" src="../../icons/pay.png" class="myPayImg"></image>
+		<image show-menu-by-longpress="true" mode="widthFix" src="../../icons/pay.png" class="myPayImg"></image>
 		<image mode="widthFix" class="cancel" src="../../icons/cancel.png" bindtap="cancelPay"></image>
 	</view>
 

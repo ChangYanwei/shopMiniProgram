@@ -1,5 +1,5 @@
 <view class="searchWrap">
-	<input value="{{query}}" type="text" bindblur="handleInput" placeholder="请输入商品名称" class="searchInput" />
+	<input value="{{query}}" type="text" bindinput="handleInput" placeholder="请输入商品名称" class="searchInput" />
 	<text class="searchBtn" bindtap="toSearch">搜索</text>
 </view>
 

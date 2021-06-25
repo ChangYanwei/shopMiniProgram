@@ -23,7 +23,7 @@ page {
 .userBgc {
 	filter: blur(4px);
 	width: 100%;
-	/* height: 400rpx; */
+	/* height: 460rpx; */
 }
 
 .userInfoShow {
@@ -94,7 +94,6 @@ page {
 .orderContent .iconfont {
 	color: var(--themeColor);
 	font-size: 40rpx;
-	margin-bottom: 5px;
 }
 
 .addressWrap,
